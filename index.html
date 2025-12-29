@@ -1,0 +1,2249 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>台南 6日5夜｜旅行小冊子</title>
+  <style>
+    :root{
+      --ink:#111;
+      --muted:#667085;
+      --line:#e7e7ea;
+      --paper:#f3f4f6;
+      --bg:#fff;
+
+      /* default（會被 day-x 覆蓋） */
+      --day:#22c55e;
+      --day-dark:#16a34a;
+      --day-soft:#ecfdf5;
+    }
+
+    /* 每天不同顏色（之後 Day2~Day6 直接改 body class） */
+    .day-1{ --day:#22c55e; --day-dark:#16a34a; --day-soft:#ecfdf5; }
+    .day-2{ --day:#f59e0b; --day-dark:#d97706; --day-soft:#fff7ed; }
+    .day-3{ --day:#ef4444; --day-dark:#dc2626; --day-soft:#fef2f2; }
+    .day-4{ --day:#3b82f6; --day-dark:#2563eb; --day-soft:#eff6ff; }
+    .day-5{ --day:#a855f7; --day-dark:#7c3aed; --day-soft:#f5f3ff; }
+    .day-6{ --day:#14b8a6; --day-dark:#0f766e; --day-soft:#ecfeff; }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", Arial, sans-serif;
+      color:var(--ink);
+      background:var(--paper);
+    }
+
+    .wrap{ max-width: 980px; margin: 22px auto; padding: 0 16px; }
+    .hint{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:12px 14px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.5;
+      margin-bottom:14px;
+    }
+
+    /* A4 page */
+    .page{
+      width:210mm;
+      min-height:297mm;
+      margin:0 auto 18px;
+      background:var(--bg);
+      border-radius:18px;
+      box-shadow:0 10px 30px rgba(0,0,0,.12);
+      overflow:hidden;
+    }
+
+    /* Main grid (full page now) */
+    .grid{
+      display:grid;
+      grid-template-columns: 62mm 1fr;
+      min-height:297mm;
+    }
+
+    /* Sidebar */
+    .sidebar{
+      background: linear-gradient(180deg, var(--day), var(--day-dark));
+      color:#fff;
+      padding: 14mm 12mm;
+      display:flex;
+      flex-direction:column;
+      gap:10mm;
+    }
+    .daynum{
+      font-size:46px;
+      font-weight:900;
+      letter-spacing:-0.02em;
+      line-height:1;
+      margin:0;
+    }
+    .daytitle{
+      margin:6px 0 0;
+      font-size:18px;
+      font-weight:900;
+      line-height:1.25;
+    }
+    .daysub{
+      margin:6px 0 0;
+      font-size:12.5px;
+      line-height:1.6;
+      color: rgba(255,255,255,.9);
+    }
+    .sidecard{
+      border:1px solid rgba(255,255,255,.22);
+      border-radius:16px;
+      padding:10px 12px;
+      background: rgba(255,255,255,.10);
+    }
+    .sidecard h3{
+      margin:0 0 8px;
+      font-size:12px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color: rgba(255,255,255,.92);
+    }
+    .sidecard p{
+      margin:0;
+      font-size:12.5px;
+      line-height:1.55;
+      color: rgba(255,255,255,.92);
+    }
+    .mini-illustration{
+      border:1px solid rgba(255,255,255,.22);
+      border-radius:16px;
+      background: rgba(255,255,255,.10);
+      padding: 10px 12px;
+    }
+    .mini-illustration svg{
+      width:100%;
+      height:auto;
+      display:block;
+      opacity:.95;
+    }
+
+    /* Content */
+    .content{
+      padding: 12mm 14mm;
+      background:#fff;
+      display:grid;
+      grid-template-rows: auto 1fr auto;
+      gap:8mm;
+    }
+    .section-title{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:10mm;
+      border-bottom:1px solid var(--line);
+      padding-bottom: 6mm;
+    }
+    .section-title h2{
+      margin:0;
+      font-size:18px;
+      letter-spacing:-0.01em;
+    }
+    .section-title .meta{
+      margin:0;
+      text-align:right;
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.5;
+      white-space:nowrap;
+    }
+
+    /* Timeline */
+    .timeline{
+      position:relative;
+      padding-left: 18px;
+      display:grid;
+      gap: 10px;
+    }
+    .timeline:before{
+      content:"";
+      position:absolute;
+      left: 7px;
+      top: 2px;
+      bottom: 2px;
+      width:2px;
+      background: rgba(0,0,0,.06);
+    }
+    .item{
+      display:grid;
+      grid-template-columns: 92px 1fr;
+      gap: 12px;
+      align-items:start;
+      position:relative;
+    }
+    .item:before{
+      content:"";
+      position:absolute;
+      left:-16px;
+      top: 10px;
+      width:12px;
+      height:12px;
+      border-radius:999px;
+      background: var(--day);
+      box-shadow: 0 0 0 4px var(--day-soft);
+      border: 1px solid rgba(0,0,0,.06);
+    }
+    .time{
+      font-weight:900;
+      font-size:12px;
+      color:#111;
+      line-height:1.2;
+      padding-top: 6px;
+    }
+    .card{
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:#fff;
+      padding:10px 12px;
+    }
+    .cardhead{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .cardhead h3{
+      margin:0;
+      font-size:14.5px;
+      line-height:1.35;
+      letter-spacing:-0.01em;
+    }
+    .tag{
+      border:1px solid var(--line);
+      background: var(--day-soft);
+      color: #0b3a1a;
+      border-radius:999px;
+      padding:4px 8px;
+      font-size:11px;
+      white-space:nowrap;
+    }
+    .desc{
+      margin:6px 0 0;
+      color:var(--muted);
+      font-size:12.5px;
+      line-height:1.6;
+    }
+    .bullets{
+      margin:8px 0 0;
+      padding-left:18px;
+      color:#333;
+      font-size:12.5px;
+      line-height:1.65;
+    }
+    .bullets li{ margin:3px 0; }
+
+    /* 📍地圖按鈕 */
+    .mapbtn{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: var(--day-soft);
+      color: var(--day-dark);
+      text-decoration:none;
+      font-weight:900;
+      font-size:12px;
+      line-height:1;
+      vertical-align: middle;
+    }
+    .mapbtn svg{ width:14px; height:14px; }
+    .mapbtn:hover{ text-decoration:none; }
+
+    /* Footer */
+    .footer{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      border-top:1px solid var(--line);
+      padding-top:6mm;
+      color:var(--muted);
+      font-size:11px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      color:#111;
+      font-weight:900;
+    }
+    .dot{ width:10px; height:10px; border-radius:999px; background:var(--day); }
+
+    /* Print */
+    @page{ size:A4; margin:0; }
+    @media print{
+      body{ background:#fff; }
+      .wrap, .hint{ display:none; }
+      .page{
+        margin:0;
+        width:210mm;
+        min-height:297mm;
+        border-radius:0;
+        box-shadow:none;
+        page-break-after:always;
+      }
+    }
+  
+
+    /* Cover + TOC */
+    .cover{
+      --day:#111827;
+      --day-dark:#0f172a;
+      --day-soft:#eef2ff;
+    }
+    .cover .grid{ grid-template-columns: 1fr; }
+    .cover .sidebar{ display:none; }
+    .cover .content{
+      grid-template-rows: auto auto 1fr auto;
+      padding: 16mm 16mm;
+    }
+    .cover-hero{
+      display:grid;
+      gap:10px;
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:14px 16px;
+      background: linear-gradient(180deg, rgba(15,23,42,.06), rgba(255,255,255,1));
+    }
+    .cover-hero h1{
+      margin:0;
+      font-size:30px;
+      letter-spacing:-0.02em;
+      line-height:1.15;
+    }
+    .cover-hero p{
+      margin:0;
+      color:var(--muted);
+      font-size:13.5px;
+      line-height:1.6;
+    }
+    .toc{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap:10px;
+      margin-top:8px;
+    }
+    .toc a{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:12px 12px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      text-decoration:none;
+      color:#111;
+      background:#fff;
+    }
+    .toc a:hover{ background:#fafafa; }
+    .toc .d{
+      display:flex; flex-direction:column; gap:3px;
+    }
+    .toc .d strong{ font-size:13.5px; }
+    .toc .d span{ font-size:12px; color:var(--muted); }
+    .pill{
+      font-size:11px;
+      font-weight:900;
+      border-radius:999px;
+      padding:5px 9px;
+      border:1px solid var(--line);
+      background:#f8fafc;
+      white-space:nowrap;
+    }
+    .topnav{
+      position: fixed;
+      right: 14px;
+      bottom: 14px;
+      z-index: 50;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+    .topnav a{
+      border:1px solid var(--line);
+      background:#fff;
+      border-radius:999px;
+      padding:10px 12px;
+      font-size:12px;
+      font-weight:900;
+      color:#111;
+      text-decoration:none;
+      box-shadow:0 10px 24px rgba(0,0,0,.10);
+    }
+    .topnav a:hover{ background:#fafafa; }
+    @media print{ .topnav{ display:none; } }
+
+    /* Make each page its own color scope */
+    .page{ position: relative; }
+    /* In combined file, pages already have class day-x to set vars */
+
+    /* Mobile-first viewing */
+    @media (max-width: 900px){
+      body{ background:#fff; }
+      .page{
+        width: 100%;
+        min-height: auto;
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+      }
+      .grid{
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+      .sidebar{
+        padding: 18px 16px;
+        gap: 14px;
+      }
+      .daynum{ font-size: 40px; }
+      .content{
+        padding: 18px 16px 22px;
+        gap: 18px;
+      }
+      .section-title{
+        padding-bottom: 14px;
+      }
+      .timeline{ padding-left: 14px; }
+      .item{ grid-template-columns: 78px 1fr; }
+      .topnav{
+        position: fixed;
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        top: auto;
+        transform: none;
+        border-radius: 16px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+        padding: 10px;
+      }
+      .topnav a{
+        padding: 8px 10px;
+        font-size: 12px;
+      }
+    }
+
+
+/* =========================
+   Safety Page 最終樣式（黑底＋淡黃，高對比，無漸層）
+   ========================= */
+.safety-page {
+  background:#0f0f0f !important;
+  color:#e5e7eb !important;
+}
+
+/* Sidebar：完全移除 gradient */
+.safety-page .sidebar{
+  background:#0f0f0f !important;
+  background-image:none !important;
+  color:#facc15 !important;
+}
+
+/* 主內容 */
+.safety-page .content{
+  background:#141414 !important;
+  color:#e5e7eb !important;
+}
+
+/* 標題 */
+.safety-page h1,
+.safety-page h2,
+.safety-page h3,
+.safety-page .cardhead h3{
+  color:#fde68a !important;
+}
+
+/* 內文 */
+.safety-page p,
+.safety-page li{
+  color:#e5e7eb !important;
+}
+
+/* 卡片 */
+.safety-page .card{
+  background:#1f1f1f !important;
+  border:1px solid #333 !important;
+}
+
+/* 標籤 */
+.safety-page .tag{
+  background:#facc15 !important;
+  color:#000 !important;
+  font-weight:800;
+}
+
+/* 按鈕 */
+.safety-page .mapbtn{
+  background:#1f1f1f !important;
+  color:#facc15 !important;
+  border:1px solid #facc15 !important;
+}
+
+/* Footer */
+.safety-page .footer{
+  color:#9ca3af !important;
+}
+
+</style>
+</head>
+<body>
+
+<div class="topnav" aria-label="快速導覽">
+  <a href="#cover">🏠 封面／目錄</a>
+  <a href="#day1">Day 1</a>
+  <a href="#day2">Day 2</a>
+  <a href="#day3">Day 3</a>
+  <a href="#day4">Day 4</a>
+  <a href="#day5">Day 5</a>
+  <a href="#day6">Day 6</a>
+  <a href="#safety">⚠️ 重要提醒／緊急聯絡</a>
+</div>
+
+
+<section class="page cover" id="cover">
+  <div class="grid">
+    <main class="content">
+      <div class="cover-hero">
+        <h1>台南 6日5夜｜旅行小冊子</h1>
+        <p>每一日都有唔同主題色。撳下面 Day 直接跳去當日行程。旅遊諮詢（交通部觀光署）：0800-011-765（多語）</p>
+        <p>日期：29/12/2025 → 03/01/2026</p>
+      </div>
+
+      <div class="section-title" style="padding-bottom:4mm;">
+        <h2>目錄</h2>
+        <p class="meta">（可印／可手機睇）</p>
+      </div>
+
+      <div class="toc" role="navigation" aria-label="目錄"><a href="#day1"><span class="d"><strong>第1天｜抵達日</strong><span>香港 → 高雄 → 台南</span></span><span class="pill">Day 1</span></a>
+        <a href="#day2"><span class="d"><strong>第2天｜安平區</strong><span>古蹟・海港・老街</span></span><span class="pill">Day 2</span></a>
+        <a href="#day3"><span class="d"><strong>第3天｜跨年日</strong><span>掃街・購物・倒數</span></span><span class="pill">Day 3</span></a>
+        <a href="#day4"><span class="d"><strong>第4天｜頑皮世界</strong><span>動物園＋夜市</span></span><span class="pill">Day 4</span></a>
+        <a href="#day5"><span class="d"><strong>第5天｜Outlet</strong><span>補買＋武聖夜市</span></span><span class="pill">Day 5</span></a>
+        <a href="#day6"><span class="d"><strong>第6天｜回程日</strong><span>台南 → 高雄 → 香港</span></span><span class="pill">Day 6</span></a>
+        <a href="#safety"><span class="d"><strong>重要提醒／緊急聯絡</strong><span>必備資料＋緊急處理</span></span><span class="pill">INFO</span></a></div>
+      </div>
+    </main>
+  </div>
+</section>
+
+
+      <footer class="footer">
+        <div class="brand"><span class="dot"></span> 台南 6日5夜・旅行小冊子</div>
+        <div>重要提醒</div>
+      </footer>
+    </main>
+  </div>
+</section>
+
+
+
+<section class="page day-1" id="day1">
+<div class="grid">
+<!-- Sidebar -->
+<aside class="sidebar">
+<div>
+<p class="daynum">第1天</p>
+<p class="daytitle">抵達日・南部暖身</p>
+<p class="daysub">29/12/2025（星期一）｜香港 → 高雄 → 台南</p>
+</div>
+<div aria-hidden="true" class="mini-illustration">
+<svg fill="none" viewbox="0 0 640 240">
+<path d="M0 190c70-28 120-34 200-14 90 22 140 22 220 0 80-22 140-18 220 14v64H0v-64z" fill="rgba(255,255,255,.20)"></path>
+<path d="M120 170v-40h36v40M180 170v-70h46v70M260 170v-55h34v55M320 170v-85h56v85M420 170v-62h36v62M470 170v-44h28v44" stroke="rgba(255,255,255,.85)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6"></path>
+<circle cx="520" cy="70" fill="rgba(255,255,255,.30)" r="22"></circle>
+<path d="M80 70c18-22 46-22 64 0" stroke="rgba(255,255,255,.85)" stroke-linecap="round" stroke-width="6"></path>
+<path d="M72 92h96" stroke="rgba(255,255,255,.65)" stroke-linecap="round" stroke-width="6"></path>
+</svg>
+</div>
+<div class="sidecard">
+<h3>住宿</h3>
+<p>
+<b>長悅旅棧</b><br/>
+            中西區北門路一段 89號<br/>
+            近台南火車站（前站）
+          </p>
+</div>
+<div class="sidecard">
+<h3>夜市公車（去程）</h3>
+<p>
+            上車：<b>東門圓環</b>（同酒店同街，步行可達）<br/>
+            路線：<b>紅幹線 / 3 號線</b><br/>
+            落車：<b>龍山寺</b><br/>
+            行 5–10 分鐘到大東夜市
+          </p>
+</div>
+<div class="sidecard">
+<h3>夜市公車（回程）</h3>
+<p>
+            先行去：<b>東門城</b> 上車<br/>
+            路線：<b>紅幹線 / 3 號線</b><br/>
+            落車：<b>東門圓環</b><br/>
+            再步行返酒店
+          </p>
+</div>
+</aside>
+<!-- Content -->
+<main class="content">
+<header class="section-title">
+<h2>Day 1 行程時間表</h2>
+<p class="meta">主題：移動・補給・夜市暖身</p>
+</header>
+<section class="timeline">
+<div class="item">
+<div class="time">10:15</div>
+<div class="card">
+<div class="cardhead">
+<h3>香港機場集合（HKG）</h3>
+<span class="tag">集合</span>
+</div>
+<p class="desc">香港國際機場 1號客運大樓 7樓｜登記行段 E</p>
+</div>
+</div>
+<div class="item">
+<div class="time">12:15–13:45</div>
+<div class="card">
+<div class="cardhead">
+<h3>搭機到高雄（EVA Air BR846）</h3>
+<span class="tag">航班</span>
+</div>
+<p class="desc">HKG 12:15 起飛 → KHH 13:45 抵達（高雄國際航空站 T1）</p>
+<ul class="bullets">
+<li>行李：23kg（託運）＋ 7kg（手提）</li>
+</ul>
+</div>
+</div>
+<div class="item">
+<div class="time">13:45–14:30</div>
+<div class="card">
+<div class="cardhead">
+<h3>過關攞行李＋插卡上網＋交通卡</h3>
+<span class="tag">機場</span>
+</div>
+<ul class="bullets">
+<li>過關、攞行李</li>
+<li>用機場 Wi-Fi：插入並啟用 <b>實體 SIM</b>（必要時設定 APN）</li>
+<li>增值 悠遊卡 / iPASS / iCash（類似八達通，用嚟搭車）</li>
+</ul>
+</div>
+</div>
+<div class="item">
+<div class="time">14:30–16:30</div>
+<div class="card">
+<div class="cardhead">
+<h3>高雄 → 台南（捷運＋台鐵）</h3>
+<span class="tag">移動</span>
+</div>
+<p class="desc">
+                高雄國際機場站 → 高捷紅線（往南岡山）→ 高雄車站 → 行約 7 分鐘 → 台鐵高雄車站 → 台南車站（區間／自強）
+              </p>
+<ul class="bullets">
+<li>車程：約 1小時15分 – 2小時（視班次）</li>
+</ul>
+</div>
+</div>
+<div class="item">
+<div class="time">16:30–16:45</div>
+<div class="card">
+<div class="cardhead">
+<h3>Check-in 入住：長悅旅棧</h3>
+<span class="tag">住宿</span>
+</div>
+<p class="desc">台南火車站（前站）步行約 7 分鐘</p>
+</div>
+</div>
+<div class="item">
+<div class="time">16:45–18:00</div>
+<div class="card">
+<div class="cardhead">
+<h3>補給／行街（北門路一段）</h3>
+<span class="tag">補給</span>
+</div>
+<ul class="bullets">
+<li>寶雅 台南北門店（10:00–22:30）</li>
+<li>屈臣氏 新北門門市（10:30–22:30）</li>
+<li>康是美 鐵站門市（09:00–21:00）</li>
+</ul>
+</div>
+</div>
+<div class="item">
+<div class="time">18:00–18:30</div>
+<div class="card">
+<div class="cardhead">
+<h3>去大東夜市（公車）</h3>
+<span class="tag">交通</span>
+</div>
+<ul class="bullets">
+<li>上車：東門圓環（步行可達）｜紅幹線 / 3 號線</li>
+<li>下車：龍山寺 → 行 5–10 分鐘到夜市</li>
+<li>
+                  地圖（上車站）：
+                  <a class="mapbtn" href="https://maps.app.goo.gl/hCq8N7yy7LAyvQLs6" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>
+                    📍地圖
+                  </a>
+</li>
+</ul>
+</div>
+</div>
+<div class="item">
+<div class="time">18:30–21:30</div>
+<div class="card">
+<div class="cardhead">
+<h3>大東夜市（掃街食晚餐）</h3>
+<span class="tag">夜市</span>
+</div>
+<p class="desc">台南市東區林森路一段 276號｜週一/二/五 18:00–01:00</p>
+</div>
+</div>
+<div class="item">
+<div class="time">21:30–22:15</div>
+<div class="card">
+<div class="cardhead">
+<h3>全聯補給</h3>
+<span class="tag">補給</span>
+</div>
+<p class="desc">全聯 台南長榮店｜東區長榮路一段 180號（08:00–23:00）</p>
+<ul class="bullets">
+<li>買飲品／杯麵／零食</li>
+</ul>
+</div>
+</div>
+<div class="item">
+<div class="time">22:15+</div>
+<div class="card">
+<div class="cardhead">
+<h3>返酒店（步行＋公車）</h3>
+<span class="tag">回程</span>
+</div>
+<ul class="bullets">
+<li>由全聯步行去 <b>東門城</b> 上車</li>
+<li>搭紅幹線 / 3 號線 → <b>東門圓環</b> 落車</li>
+<li>落車後步行返 <b>長悅旅棧</b></li>
+<li>
+                  地圖（回程上車站）：
+                  <a class="mapbtn" href="https://maps.app.goo.gl/7s5iemQ2NcYtYWWi9" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>
+                    📍地圖
+                  </a>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<footer class="footer">
+<div class="brand"><span class="dot"></span> 台南 6日5夜・旅行小冊子</div>
+<div>Day 1 / 6</div>
+</footer>
+</main>
+</div>
+</section><section class="page day-2" id="day2">
+<div class="grid">
+<!-- Sidebar -->
+<aside class="sidebar">
+<div>
+<p class="daynum">第2天</p>
+<p class="daytitle">安平區一日遊</p>
+<p class="daysub">30/12/2025（星期二）｜古蹟・海港・老街</p>
+</div>
+<div aria-hidden="true" class="mini-illustration">
+<svg fill="none" viewbox="0 0 640 240">
+<path d="M0 190c70-28 120-34 200-14 90 22 140 22 220 0 80-22 140-18 220 14v64H0v-64z" fill="rgba(255,255,255,.20)"></path>
+<path d="M80 160c30-30 80-30 110 0M220 160c30-30 80-30 110 0M360 160c30-30 80-30 110 0" stroke="rgba(255,255,255,.85)" stroke-linecap="round" stroke-width="6"></path>
+<path d="M120 170v-50h50v50M430 170v-70h60v70" stroke="rgba(255,255,255,.85)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6"></path>
+<circle cx="520" cy="70" fill="rgba(255,255,255,.30)" r="22"></circle>
+</svg>
+</div>
+<div class="sidecard">
+<h3>交通（去安平）</h3>
+<p>
+            上車：台南火車站（前站）<br/>
+            路線：14 九人小巴／19 公車<br/>
+            落車：億載金城
+          </p>
+</div>
+<div class="sidecard">
+<h3>今日重點</h3>
+<p>
+            億載金城 → 德陽艦 → 大魚的祝福<br/>
+            午餐：周氏蝦捲掃街<br/>
+            17:00–18:00 遊港遊運河
+          </p>
+</div>
+</aside>
+<!-- Content -->
+<main class="content">
+<header class="section-title">
+<h2>Day 2 行程時間表</h2>
+<p class="meta">早餐：酒店早餐<br/>黑橋牌：後備</p>
+</header>
+<section class="timeline">
+<div class="item">
+<div class="time">08:00–08:45</div>
+<div class="card">
+<div class="cardhead">
+<h3>酒店早餐</h3>
+<span class="tag">早餐</span>
+</div>
+<p class="desc">食飽先出發，今日行程偏密。</p>
+</div>
+</div>
+<div class="item">
+<div class="time">08:45–09:00</div>
+<div class="card">
+<div class="cardhead">
+<h3>出發去安平（14／19）</h3>
+<span class="tag">交通</span>
+</div>
+<ul class="bullets">
+<li>上車：台南火車站（前站）</li>
+<li>落車：億載金城</li>
+<li>
+                  📍地圖（台南火車站前站）：
+                  <a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%8F%B0%E5%8D%97%E7%81%AB%E8%BB%8A%E7%AB%99%20%E5%89%8D%E7%AB%99" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>
+                    📍地圖
+                  </a>
+</li>
+</ul>
+</div>
+</div>
+<div class="item">
+<div class="time">09:00–10:00</div>
+<div class="card">
+<div class="cardhead">
+<h3>億載金城（二鯤鯓砲臺）</h3>
+<span class="tag">古蹟</span>
+</div>
+<p class="desc">安平區光州路 3 號｜08:30–17:30｜門票 70／35</p>
+<ul class="bullets">
+<li>
+<a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%84%84%E8%BC%89%E9%87%91%E5%9F%8E%20%E8%87%BA%E5%8D%97%E5%B8%82%E5%AE%89%E5%B9%B3%E5%8D%80%E5%85%89%E5%B7%9E%E8%B7%AF3%E8%99%9F" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>
+                    📍地圖
+                  </a>
+</li>
+</ul>
+</div>
+</div>
+<div class="item">
+<div class="time">10:15–11:30</div>
+<div class="card">
+<div class="cardhead">
+<h3>德陽艦園區（安平定情碼頭）</h3>
+<span class="tag">海港</span>
+</div>
+<p class="desc">安平區安億路 115 號｜09:00–19:00｜門票 100</p>
+<ul class="bullets">
+<li>
+<a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%BE%B7%E9%99%BD%E8%89%A6%E5%9C%92%E5%8D%80%20%E8%87%BA%E5%8D%97%E5%B8%82%E5%AE%89%E5%B9%B3%E5%8D%80%E5%AE%89%E5%84%84%E8%B7%AF115%E8%99%9F" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>
+                    📍地圖
+                  </a>
+</li>
+</ul>
+</div>
+</div>
+<div class="item">
+<div class="time">11:30–12:00</div>
+<div class="card">
+<div class="cardhead">
+<h3>大魚的祝福（打卡位）</h3>
+<span class="tag">打卡</span>
+</div>
+<p class="desc">安億橋邊港濱歷史公園｜24 小時｜免費（夜晚 18:00–22:00 會點燈）</p>
+<ul class="bullets">
+<li>
+<a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%A4%A7%E9%AD%9A%E7%9A%84%E7%A5%9D%E7%A6%8F%20%E8%87%BA%E5%8D%97%20%E5%AE%89%E5%84%84%E6%A9%8B" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>
+                    📍地圖
+                  </a>
+</li>
+</ul>
+</div>
+</div>
+<div class="item">
+<div class="time">12:00–13:00</div>
+<div class="card">
+<div class="cardhead">
+<h3>周氏蝦捲＋掃街</h3>
+<span class="tag">午餐</span>
+</div>
+<p class="desc">安平路 408-1 號｜10:00–21:30</p>
+<ul class="bullets">
+<li>推薦：蝦捲／擔仔麵／魚羹／虱目魚丸湯／炸花枝丸</li>
+<li>
+<a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%91%A8%E6%B0%8F%E8%9D%A6%E6%8D%B2%20%E8%87%BA%E5%8D%97%E5%B8%82%E5%AE%89%E5%B9%B3%E5%8D%80%E5%AE%89%E5%B9%B3%E8%B7%AF408-1%E8%99%9F" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>
+                    📍地圖
+                  </a>
+</li>
+<li><b>後備：</b>黑橋牌香腸博物館（09:30–17:30）
+                  <a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=%E9%BB%91%E6%A9%8B%E9%A6%99%E8%85%B8%E5%8D%9A%E7%89%A9%E9%A4%A8%20%E8%87%BA%E5%8D%97%E5%B8%82%E5%8D%97%E5%8D%80%E6%96%B0%E5%BF%A0%E8%B7%AF2%E8%99%9F" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>
+                    📍地圖
+                  </a>
+</li>
+</ul>
+</div>
+</div>
+<div class="item">
+<div class="time">13:30–14:30</div>
+<div class="card">
+<div class="cardhead">
+<h3>安平古堡（含熱蘭遮城博物館）</h3>
+<span class="tag">古蹟</span>
+</div>
+<p class="desc">國勝路 82 號｜08:30–17:30｜門票 70／35</p>
+<ul class="bullets">
+<li>
+<a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%AE%89%E5%B9%B3%E5%8F%A4%E5%A0%A1%20%E8%87%BA%E5%8D%97%E5%B8%82%E5%AE%89%E5%B9%B3%E5%8D%80%E5%9C%8B%E5%8B%9D%E8%B7%AF82%E8%99%9F" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>
+                    📍地圖
+                  </a>
+</li>
+</ul>
+</div>
+</div>
+<div class="item">
+<div class="time">14:30–15:15</div>
+<div class="card">
+<div class="cardhead">
+<h3>安平樹屋</h3>
+<span class="tag">自然</span>
+</div>
+<p class="desc">古堡街 104 號｜08:30–17:30｜門票 70／35</p>
+<ul class="bullets">
+<li>
+<a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%AE%89%E5%B9%B3%E6%A8%B9%E5%B1%8B%20%E8%87%BA%E5%8D%97%E5%B8%82%E5%AE%89%E5%B9%B3%E5%8D%80%E5%8F%A4%E5%A0%A1%E8%A1%97104%E8%99%9F" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>
+                    📍地圖
+                  </a>
+</li>
+</ul>
+</div>
+</div>
+<div class="item">
+<div class="time">15:15–16:00</div>
+<div class="card">
+<div class="cardhead">
+<h3>安平老街（延平街）</h3>
+<span class="tag">掃街</span>
+</div>
+<p class="desc">24 小時｜免費（小食／手信）</p>
+<ul class="bullets">
+<li>
+<a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%AE%89%E5%B9%B3%E8%80%81%E8%A1%97%20%E5%BB%B6%E5%B9%B3%E8%A1%97%20%E8%87%BA%E5%8D%97" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>
+                    📍地圖
+                  </a>
+</li>
+</ul>
+</div>
+</div>
+<div class="item">
+<div class="time">16:00–16:40</div>
+<div class="card">
+<div class="cardhead">
+<h3>安平出張所（生日鹽／御守）</h3>
+<span class="tag">手信</span>
+</div>
+<p class="desc">古堡街 196 號｜10:00–18:00</p>
+<ul class="bullets">
+<li>
+<a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%AE%89%E5%B9%B3%E5%87%BA%E5%BC%B5%E6%89%80%20%E8%87%BA%E5%8D%97%E5%B8%82%E5%AE%89%E5%B9%B3%E5%8D%80%E5%8F%A4%E5%A0%A1%E8%A1%97196%E8%99%9F" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>
+                    📍地圖
+                  </a>
+</li>
+<li></li>
+</ul>
+</div>
+</div>
+<div class="item">
+<div class="time">17:00–18:00</div>
+<div class="card">
+<div class="cardhead">
+<h3>立驛國際・安平遊港遊運河</h3>
+<span class="tag">遊船</span>
+</div>
+<p class="desc">安億路 501 號｜黃昏時段，景色最好</p>
+<ul class="bullets">
+<li>
+<a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=%E7%AB%8B%E9%A9%9B%E5%9C%8B%E9%9A%9B%20%E5%AE%89%E5%B9%B3%E9%81%8A%E6%B8%AF%E9%81%8A%E9%81%8B%E6%B2%B3%20%E8%87%BA%E5%8D%97%E5%B8%82%E5%AE%89%E5%B9%B3%E5%8D%80%E5%AE%89%E5%84%84%E8%B7%AF501%E8%99%9F" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>
+                    📍地圖
+                  </a>
+</li>
+</ul>
+</div>
+</div>
+<div class="item">
+<div class="time">18:30–20:30</div>
+<div class="card">
+<div class="cardhead">
+<h3>晚餐：月季（特色鴛鴦火鍋）</h3>
+<span class="tag">晚餐</span>
+</div>
+<p class="desc">東區中華東路三段 285 號｜11:00–22:30</p>
+<ul class="bullets">
+<li>交通（按你原本）：東門圓環 → 搭 3／紅4 → 落車後行 2–3 分鐘</li>
+<li>
+<a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%9C%88%E5%AD%A3%20%E7%89%B9%E8%89%B2%E9%B4%9B%E9%B4%A6%E7%81%AB%E9%8D%8B%20%E8%87%BA%E5%8D%97%E5%B8%82%E6%9D%B1%E5%8D%80%E4%B8%AD%E8%8F%AF%E6%9D%B1%E8%B7%AF%E4%B8%89%E6%AE%B5285%E8%99%9F" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>
+                    📍地圖
+                  </a>
+</li>
+</ul>
+</div>
+</div>
+<!-- NEW: Return to hotel (your short link) -->
+<div class="item">
+<div class="time">20:30+</div>
+<div class="card">
+<div class="cardhead">
+<h3>返酒店休息</h3>
+<span class="tag">回程</span>
+</div>
+<ul class="bullets">
+<li>
+                  路線／定位：
+                  <a class="mapbtn" href="https://maps.app.goo.gl/n5KqG5zfPQzPgngR8" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>
+                    📍地圖
+                  </a>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<footer class="footer">
+<div class="brand"><span class="dot"></span> 台南 6日5夜・旅行小冊子</div>
+<div>Day 2 / 6</div>
+</footer>
+</main>
+</div>
+</section><section class="page day-3" id="day3">
+<div class="grid">
+<!-- Sidebar -->
+<aside class="sidebar">
+<div>
+<p class="daynum">第3天</p>
+<p class="daytitle">掃街・購物・跨年</p>
+<p class="daysub">31/12/2025（星期三）｜市中心一路行到倒數</p>
+</div>
+<div aria-hidden="true" class="mini-illustration">
+<svg fill="none" viewbox="0 0 640 240">
+<path d="M0 190c70-28 120-34 200-14 90 22 140 22 220 0 80-22 140-18 220 14v64H0v-64z" fill="rgba(255,255,255,.20)"></path>
+<path d="M140 60l20 40 40 6-30 28 8 40-38-20-38 20 8-40-30-28 40-6z" fill="rgba(255,255,255,.30)"></path>
+<path d="M420 60l20 40 40 6-30 28 8 40-38-20-38 20 8-40-30-28 40-6z" fill="rgba(255,255,255,.30)"></path>
+<path d="M260 95c30-40 90-40 120 0" stroke="rgba(255,255,255,.85)" stroke-linecap="round" stroke-width="6"></path>
+<circle cx="520" cy="70" fill="rgba(255,255,255,.25)" r="22"></circle>
+</svg>
+</div>
+<div class="sidecard">
+<h3>早餐（二揀一）</h3>
+<p>
+            Mumu 小客廳<br/>
+            或 Minimou Brunch（文學店）
+          </p>
+</div>
+<div class="sidecard">
+<h3>今日重點</h3>
+<p>
+            赤崁樓＋林百貨<br/>
+            國華街掃街（午餐）<br/>
+            藍晒圖＋神農街（夜景）<br/>
+            跨年：新光三越 小北門
+          </p>
+</div>
+</aside>
+<!-- Content -->
+<main class="content">
+<header class="section-title">
+<h2>Day 3 行程時間表</h2>
+<p class="meta">建議：買完手信<br/>中途返酒店放一轉</p>
+</header>
+<section class="timeline">
+<div class="item">
+<div class="time">09:00–10:00</div>
+<div class="card">
+<div class="cardhead">
+<h3>早餐（揀一間）</h3>
+<span class="tag">早餐</span>
+</div>
+<ul class="bullets">
+<li>
+                  Mumu 小客廳（09:00–16:00）
+                  <a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=Mumu+小客廳+台南市中西區開山路35巷16號" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>📍地圖
+                  </a>
+</li>
+<li>
+                  Minimou Brunch（文學店｜09:00–17:00）
+                  <a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=Minimou+Brunch+文學店+台南市中西區湯德章大道1號" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>📍地圖
+                  </a>
+</li>
+</ul>
+</div>
+</div>
+<div class="item">
+<div class="time">10:00–11:10</div>
+<div class="card">
+<div class="cardhead">
+<h3>赤崁樓（古蹟＋手信）</h3>
+<span class="tag">古蹟</span>
+</div>
+<p class="desc">民族路二段 212 號｜08:30–21:00｜手信位好多，慢慢睇</p>
+<ul class="bullets">
+<li>
+<a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=赤崁樓+台南市中西區民族路二段212號" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>📍地圖
+                  </a>
+</li>
+<li>手信：果酥禮盒／點心麵／成功洋芋片／媽祖小泡芙／月老軟糖／調味海苔等</li>
+<li>網站：historic.tainan.gov.tw</li>
+</ul>
+</div>
+</div>
+<div class="item">
+<div class="time">11:10–11:50</div>
+<div class="card">
+<div class="cardhead">
+<h3>手信小店快買（順路）</h3>
+<span class="tag">手信</span>
+</div>
+<ul class="bullets">
+<li>
+                  進福大灣花生糖（赤崁店）
+                  <a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=進福大灣花生糖+赤崁店+台南" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>📍地圖
+                  </a>
+</li>
+<li>
+                  黑橋牌（花園店）
+                  <a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=黑橋牌+花園店+台南" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>📍地圖
+                  </a>
+</li>
+</ul>
+</div>
+</div>
+<div class="item">
+<div class="time">12:00–13:00</div>
+<div class="card">
+<div class="cardhead">
+<h3>林百貨（必行）</h3>
+<span class="tag">購物</span>
+</div>
+<p class="desc">忠義路二段 63 號｜11:00–21:00</p>
+<ul class="bullets">
+<li>手信：23.5°N 米面膜、紅色 3 盒曲奇</li>
+<li>
+<a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=林百貨+台南市中西區忠義路二段63號" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>📍地圖
+                  </a>
+</li>
+</ul>
+</div>
+</div>
+<div class="item">
+<div class="time">13:10–15:10</div>
+<div class="card">
+<div class="cardhead">
+<h3>國華街掃街（午餐）</h3>
+<span class="tag">掃街</span>
+</div>
+<p class="desc">今日重點：見到就食，唔使太執着排隊。</p>
+<ul class="bullets">
+<li>
+                  國華街
+                  <a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=國華街+台南" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>📍地圖
+                  </a>
+</li>
+<li>推薦：豆腐洋行（泰奶豆腐）、炸雞洋行（八兩雞）、吻鑽糖（半熟乳酪塔）、林家白糖粿、捲尾家（焙茶雪糕）等</li>
+<li>
+                  青山茶行（琥珀冰磚奶｜12:00–17:00）
+                  <a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=青山茶行+台南市中西區民生路二段117號" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>📍地圖
+                  </a>
+</li>
+<li>
+                  万茶川（抹茶專門店｜11:00–20:00）
+                  <a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=万茶川+台南市中西區府前路一段357號" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>📍地圖
+                  </a>
+</li>
+</ul>
+</div>
+</div>
+<div class="item">
+<div class="time">15:30–17:00</div>
+<div class="card">
+<div class="cardhead">
+<h3>新光三越 中山店 ＋ Focus（買齊手信）</h3>
+<span class="tag">購物</span>
+</div>
+<ul class="bullets">
+<li>
+                  新光三越 中山店
+                  <a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=新光三越+台南中山店" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>📍地圖
+                  </a>
+</li>
+<li>
+                  無印良品（中山店 B1｜綠茶糖、桂花烏龍糖）
+                  <a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=無印良品+台南中山店" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>📍地圖
+                  </a>
+</li>
+<li>
+                  Focus 時尚流行館
+                  <a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=Focus+時尚流行館+台南" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>📍地圖
+                  </a>
+</li>
+<li>
+                  CACO（Focus 4 樓）
+                  <a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=CACO+Focus+台南" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>📍地圖
+                  </a>
+</li>
+</ul>
+</div>
+</div>
+<div class="item">
+<div class="time">17:00–17:30</div>
+<div class="card">
+<div class="cardhead">
+<h3>回酒店放戰利品</h3>
+<span class="tag">補給</span>
+</div>
+<p class="desc">輕裝再出發，夜晚行得舒服啲。</p>
+</div>
+</div>
+<div class="item">
+<div class="time">17:45–18:30</div>
+<div class="card">
+<div class="cardhead">
+<h3>藍晒圖文創園區（黃昏打卡）</h3>
+<span class="tag">打卡</span>
+</div>
+<ul class="bullets">
+<li>
+<a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=藍晒圖+台南" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>📍地圖
+                  </a>
+</li>
+</ul>
+</div>
+</div>
+<div class="item">
+<div class="time">18:30–19:10</div>
+<div class="card">
+<div class="cardhead">
+<h3>神農街（夜景氣氛位）</h3>
+<span class="tag">夜景</span>
+</div>
+<ul class="bullets">
+<li>
+<a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=神農街+台南" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>📍地圖
+                  </a>
+</li>
+</ul>
+</div>
+</div>
+<div class="item">
+<div class="time">19:10–19:50</div>
+<div class="card">
+<div class="cardhead">
+<h3>晚餐：醇涎坊鍋燒意麵</h3>
+<span class="tag">晚餐</span>
+</div>
+<p class="desc">保安路 53 號｜06:00–20:00（記得早啲去）</p>
+<ul class="bullets">
+<li>推薦：鍋燒意麵、鍋燒烏龍麵</li>
+<li>
+<a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=醇涎坊+古早味鍋燒意麵+台南市中西區保安路53號" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>📍地圖
+                  </a>
+</li>
+</ul>
+</div>
+</div>
+<div class="item">
+<div class="time">20:30+</div>
+<div class="card">
+<div class="cardhead">
+<h3>跨年：新光三越 台南小北門</h3>
+<span class="tag">跨年</span>
+</div>
+<p class="desc">提早到位，避開人潮；帶定水同少少零食。</p>
+<ul class="bullets">
+<li>
+<a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=新光三越+台南小北門" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>📍地圖
+                  </a>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<footer class="footer">
+<div class="brand"><span class="dot"></span> 台南 6日5夜・旅行小冊子</div>
+<div>Day 3 / 6</div>
+</footer>
+</main>
+</div>
+</section><section class="page day-4" id="day4">
+<div class="grid">
+<!-- Sidebar -->
+<aside class="sidebar">
+<div>
+<p class="daynum">第4天</p>
+<p class="daytitle">頑皮世界＋夜市</p>
+<p class="daysub">01/01/2026（星期四）｜動物園一日遊</p>
+</div>
+<div aria-hidden="true" class="mini-illustration">
+<svg fill="none" viewbox="0 0 640 240">
+<path d="M0 190c70-28 120-34 200-14 90 22 140 22 220 0 80-22 140-18 220 14v64H0v-64z" fill="rgba(255,255,255,.20)"></path>
+<path d="M120 160c20-20 70-20 90 0" stroke="rgba(255,255,255,.85)" stroke-linecap="round" stroke-width="6"></path>
+<path d="M260 165c20-26 90-26 110 0" stroke="rgba(255,255,255,.85)" stroke-linecap="round" stroke-width="6"></path>
+<path d="M420 160c20-20 70-20 90 0" stroke="rgba(255,255,255,.85)" stroke-linecap="round" stroke-width="6"></path>
+<circle cx="520" cy="70" fill="rgba(255,255,255,.25)" r="22"></circle>
+</svg>
+</div>
+<div class="sidecard">
+<h3>集合</h3>
+<p>08:00–08:30 起床／收拾／集合</p>
+</div>
+<div class="sidecard">
+<h3>今日重點</h3>
+<p>
+            11:00–17:00 頑皮世界<br/>
+            15:30 水豚互動（已預約）<br/>
+            晚餐：花園夜市（或室內後備）
+          </p>
+</div>
+<div class="sidecard">
+<h3>交通要點</h3>
+<p>
+            去程／回程都有路線圖<br/>
+            棕1（往新營）尾班 17:41
+          </p>
+</div>
+</aside>
+<!-- Content -->
+<main class="content">
+<header class="section-title">
+<h2>Day 4 行程時間表</h2>
+<p class="meta">午餐：園區內解決<br/>門票：建議網上買</p>
+</header>
+<section class="timeline">
+<div class="item">
+<div class="time">08:00–08:30</div>
+<div class="card">
+<div class="cardhead">
+<h3>起床＋集合</h3>
+<span class="tag">準備</span>
+</div>
+<p class="desc">今日要出遠少少，記得帶水、帽、充電。</p>
+</div>
+</div>
+<div class="item">
+<div class="time">08:30–08:45</div>
+<div class="card">
+<div class="cardhead">
+<h3>早餐（二揀一）</h3>
+<span class="tag">早餐</span>
+</div>
+<ul class="bullets">
+<li>酒店早餐（最方便）</li>
+<li>
+                  A Bao 台南民族店（06:00–13:00）
+                  <a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=A+bao+台南民族店" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>📍地圖
+                  </a>
+</li>
+</ul>
+</div>
+</div>
+<div class="item">
+<div class="time">08:45–11:00</div>
+<div class="card">
+<div class="cardhead">
+<h3>前往動物園（台鐵＋客運）</h3>
+<span class="tag">去程</span>
+</div>
+<ul class="bullets">
+<li>台南車站（台鐵）→ 新營車站</li>
+<li>新營客運新營站 → 搭 棕1（經北門國中）→ 頑皮世界</li>
+<li>
+                  去程路線（Google Maps）：
+                  <a class="mapbtn" href="https://maps.app.goo.gl/Hoj1NC8MrUsAuQAC8" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>📍地圖
+                  </a>
+</li>
+</ul>
+</div>
+</div>
+<div class="item">
+<div class="time">11:00–17:00</div>
+<div class="card">
+<div class="cardhead">
+<h3>頑皮世界野生動物園</h3>
+<span class="tag">動物園</span>
+</div>
+<p class="desc">09:00–17:00｜午餐園區內解決｜門票建議網上先買</p>
+<ul class="bullets">
+<li>
+                  園區定位：
+                  <a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=頑皮世界野生動物園" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>📍地圖
+                  </a>
+</li>
+<li>午餐建議：12:30–13:30 食，避開體驗前後</li>
+</ul>
+</div>
+</div>
+<div class="item">
+<div class="time">15:30</div>
+<div class="card highlight">
+<div class="cardhead">
+<h3>水豚互動體驗（已預約 ⭐）</h3>
+<span class="tag">重點</span>
+</div>
+<p class="desc">南美水豚區（動物區 12 號）｜不包含入園門票（需另購）</p>
+<ul class="bullets">
+<li><b>15:25 前到達</b>南美水豚區（動物區 12 號）</li>
+<li>工作人員於互動前 5 分鐘進行 <b>入園 QR Code 核銷</b></li>
+<li>建議 15:15 已到附近等候，影相唔急</li>
+</ul>
+</div>
+</div>
+<div class="item">
+<div class="time">17:00–19:00</div>
+<div class="card">
+<div class="cardhead">
+<h3>回市區（注意尾班車）</h3>
+<span class="tag">回程</span>
+</div>
+<ul class="bullets">
+<li>頑皮世界 → 搭 棕1（往新營）→ 新營 → 台鐵返台南</li>
+<li><b>棕1（往新營）尾班：17:41</b>｜建議 17:20–17:30 已到站等</li>
+<li>台鐵方向：往「台南／高雄／潮州」</li>
+<li>
+                  回程路線（Google Maps）：
+                  <a class="mapbtn" href="https://maps.app.goo.gl/JTncimgDsnoGhL5k7" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>📍地圖
+                  </a>
+</li>
+</ul>
+</div>
+</div>
+<div class="item">
+<div class="time">19:30+</div>
+<div class="card">
+<div class="cardhead">
+<h3>晚餐（二揀一）</h3>
+<span class="tag">晚餐</span>
+</div>
+<ul class="bullets">
+<li>
+                  花園夜市（星期四開｜17:00–00:00）
+                  <a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=花園夜市台南" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>📍地圖
+                  </a>
+<div class="desc">推薦：御蕾・Crème Brûlée（美食區第 3 條街）</div>
+</li>
+<li>
+                  （後備）仙屋日食（厚切炸豬排｜17:00–23:00）
+                  <a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=仙屋日食+台南" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>📍地圖
+                  </a>
+<div class="desc">推薦：極厚豚丼 $190、日式炒麵 $160</div>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<footer class="footer">
+<div class="brand"><span class="dot"></span> 台南 6日5夜・旅行小冊子</div>
+<div>Day 4 / 6</div>
+</footer>
+</main>
+</div>
+</section><section class="page day-5" id="day5">
+<div class="grid">
+<!-- Sidebar -->
+<aside class="sidebar">
+<div>
+<p class="daynum">第5天</p>
+<p class="daytitle">Outlet＋夜市</p>
+<p class="daysub">02/01/2026（星期五）｜補買＋慢活收尾</p>
+</div>
+<div aria-hidden="true" class="mini-illustration">
+<svg fill="none" viewbox="0 0 640 240">
+<path d="M0 190c70-28 120-34 200-14 90 22 140 22 220 0 80-22 140-18 220 14v64H0v-64z" fill="rgba(255,255,255,.20)"></path>
+<path d="M140 95h120l-10 70H150l-10-70z" fill="rgba(255,255,255,.22)"></path>
+<path d="M220 95c0-30 50-30 50 0" stroke="rgba(255,255,255,.85)" stroke-linecap="round" stroke-width="6"></path>
+<path d="M380 95h120l-10 70H390l-10-70z" fill="rgba(255,255,255,.22)"></path>
+<path d="M460 95c0-30 50-30 50 0" stroke="rgba(255,255,255,.85)" stroke-linecap="round" stroke-width="6"></path>
+<circle cx="520" cy="70" fill="rgba(255,255,255,.25)" r="22"></circle>
+</svg>
+</div>
+<div class="sidecard">
+<h3>今日重點</h3>
+<p>
+            上午：彈性補行／補買<br/>
+            中午：MITSUI Outlet<br/>
+            晚上：武聖夜市
+          </p>
+</div>
+<div class="sidecard">
+<h3>必行店</h3>
+<p>Gap Outlet</p>
+</div>
+<div class="sidecard">
+<h3>夜市推薦</h3>
+<p>沙威瑪｜拔絲地瓜｜豆乳雞｜木瓜牛乳</p>
+</div>
+</aside>
+<!-- Content -->
+<main class="content">
+<header class="section-title">
+<h2>Day 5 行程時間表</h2>
+<p class="meta">午餐：Outlet 內<br/>夜市：武聖夜市</p>
+</header>
+<section class="timeline">
+<div class="item">
+<div class="time">09:30–10:30</div>
+<div class="card">
+<div class="cardhead">
+<h3>早餐：豆弄</h3>
+<span class="tag">早餐</span>
+</div>
+<p class="desc">五妃街慢活早餐，唔趕行程最舒服。</p>
+<ul class="bullets">
+<li>地址：中西區五妃街 76 號 1 樓｜09:30–17:00</li>
+<li>
+<a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=豆弄+台南市中西區五妃街76號" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>📍地圖
+                  </a>
+</li>
+</ul>
+</div>
+</div>
+<div class="item">
+<div class="time">10:30–11:30</div>
+<div class="card">
+<div class="cardhead">
+<h3>彈性時間（補買／補行）</h3>
+<span class="tag">自由</span>
+</div>
+<p class="desc">可以補買手信，或者行返 Day 3 未去嘅點。</p>
+</div>
+</div>
+<div class="item">
+<div class="time">11:30–12:15</div>
+<div class="card">
+<div class="cardhead">
+<h3>市區 → Outlet（台鐵往沙崙）</h3>
+<span class="tag">去程</span>
+</div>
+<ul class="bullets">
+<li>台南車站 → 台鐵（往沙崙）→ 沙崙站 → 步行約 6 分鐘</li>
+<li>
+                  路線（Google Maps）：
+                  <a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=台南車站+到+台南+MITSUI+OUTLET+PARK" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>📍地圖
+                  </a>
+</li>
+</ul>
+</div>
+</div>
+<div class="item">
+<div class="time">12:15–16:30</div>
+<div class="card">
+<div class="cardhead">
+<h3>台南 MITSUI OUTLET PARK</h3>
+<span class="tag">購物</span>
+</div>
+<p class="desc">歸仁大道 101 號｜11:00–21:30｜重點：Gap Outlet</p>
+<ul class="bullets">
+<li>
+<a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=台南+MITSUI+OUTLET+PARK" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>📍地圖
+                  </a>
+</li>
+<li class="inline-row">
+<span>午餐（揀一間）：</span>
+<a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=彌生軒+台南+MITSUI" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>彌生軒｜📍地圖
+                  </a>
+<a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=Mochi+Mochi+鬆餅屋+台南+MITSUI" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>Mochi Mochi｜📍地圖
+                  </a>
+</li>
+</ul>
+</div>
+</div>
+<!-- ✅ 返市區（加咗地圖） -->
+<div class="item">
+<div class="time">16:30–17:15</div>
+<div class="card">
+<div class="cardhead">
+<h3>返市區（原路台鐵）</h3>
+<span class="tag">回程</span>
+</div>
+<p class="desc">沙崙 → 台南市區；可先返酒店放戰利品。</p>
+<ul class="bullets">
+<li>
+                  回程路線（Google Maps）：
+                  <a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=沙崙站+到+台南車站" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>📍地圖
+                  </a>
+</li>
+</ul>
+</div>
+</div>
+<div class="item">
+<div class="time">18:00–18:30</div>
+<div class="card">
+<div class="cardhead">
+<h3>前往夜市 → 晚餐｜武聖夜市</h3>
+<span class="tag">夜市</span>
+</div>
+<ul class="bullets">
+<li>
+                  夜市定位：
+                  <a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=武聖夜市" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>📍地圖
+                  </a>
+</li>
+<li><b>路線 A（安平一帶出發）：</b>安平老街 → 港仔里 → 搭 2／2 延駛三鯤鯓 → 民生路臨時停車場 → 步行 13 分鐘</li>
+<li><b>路線 B（市中心／酒店出發）：</b>文悅旅棧 → 民族路 → 搭 3 號公車 → 文賢國中 → 步行 6 分鐘</li>
+</ul>
+</div>
+</div>
+<!-- ✅ 必食推薦（加咗逐項地圖） -->
+<div class="item">
+<div class="time">18:30–21:00</div>
+<div class="card">
+<div class="cardhead">
+<h3>晚餐：武聖夜市（掃街）</h3>
+<span class="tag">晚餐</span>
+</div>
+<p class="desc"><b>必食（逐樣搵）：</b></p>
+<ul class="bullets">
+<li>
+                  中東口味沙威瑪／速立邁沙威瑪
+                  <a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=中東口味沙威瑪+武聖夜市" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>📍地圖
+                  </a>
+</li>
+<li>
+                  陳家阿嬤拔絲地瓜
+                  <a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=陳家阿嬤拔絲地瓜+武聖夜市" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>📍地圖
+                  </a>
+</li>
+<li>
+                  小上海香酥雞
+                  <a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=小上海香酥雞+武聖夜市" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>📍地圖
+                  </a>
+</li>
+<li>
+                  九如超營養三明治
+                  <a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=九如超營養三明治+武聖夜市" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>📍地圖
+                  </a>
+</li>
+<li>
+                  林家豆乳雞
+                  <a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=林家豆乳雞+武聖夜市" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>📍地圖
+                  </a>
+</li>
+<li>
+                  串博章魚燒
+                  <a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=串博章魚燒+武聖夜市" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>📍地圖
+                  </a>
+</li>
+<li>
+                  三輪車大腸香腸
+                  <a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=三輪車大腸香腸+武聖夜市" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>📍地圖
+                  </a>
+</li>
+</ul>
+<p class="desc"><b>飲品：</b></p>
+<ul class="bullets">
+<li>
+                  嘟嘟斯強泰式奶茶
+                  <a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=嘟嘟斯強泰式奶茶+武聖夜市" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>📍地圖
+                  </a>
+</li>
+<li>
+                  阿美嬤紅茶舖（檸檬紅茶）
+                  <a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=阿美嬤紅茶舖+武聖夜市" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>📍地圖
+                  </a>
+</li>
+<li>
+                  佳佳木瓜牛乳
+                  <a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=佳佳木瓜牛乳+武聖夜市" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>📍地圖
+                  </a>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<footer class="footer">
+<div class="brand"><span class="dot"></span> 台南 6日5夜・旅行小冊子</div>
+<div>Day 5 / 6</div>
+</footer>
+</main>
+</div>
+</section><section class="page day-6" id="day6">
+<div class="grid">
+<!-- Sidebar -->
+<aside class="sidebar">
+<div>
+<p class="daynum">第6天</p>
+<p class="daytitle">回程日</p>
+<p class="daysub">03/01/2026（星期六）｜台南 → 高雄 → 香港</p>
+</div>
+<div aria-hidden="true" class="mini-illustration">
+<svg fill="none" viewbox="0 0 640 240">
+<path d="M0 190c70-28 120-34 200-14 90 22 140 22 220 0 80-22 140-18 220 14v64H0v-64z" fill="rgba(255,255,255,.20)"></path>
+<path d="M110 120h220c30 0 55 18 55 40v12H110v-52z" fill="rgba(255,255,255,.22)"></path>
+<path d="M385 160h80c22 0 40-10 40-22s-18-22-40-22h-30" stroke="rgba(255,255,255,.85)" stroke-linecap="round" stroke-width="6"></path>
+<path d="M170 130l40-30 40 30" stroke="rgba(255,255,255,.85)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6"></path>
+<circle cx="520" cy="70" fill="rgba(255,255,255,.25)" r="22"></circle>
+</svg>
+</div>
+<div class="sidecard">
+<h3>酒店</h3>
+<p>
+            長悅旅棧<br/>
+            12:00 退房
+          </p>
+</div>
+<div class="sidecard">
+<h3>航班</h3>
+<p>
+            EVA Air BR 849<br/>
+            KHH 16:40 → HKG 18:35
+          </p>
+</div>
+<div class="sidecard">
+<h3>行李</h3>
+<p>23kg（託運）＋ 7kg（手提）</p>
+</div>
+</aside>
+<!-- Content -->
+<main class="content">
+<header class="section-title">
+<h2>Day 6 行程時間表</h2>
+<p class="meta">午餐：飛機餐<br/>交通：台鐵＋捷運</p>
+</header>
+<section class="timeline">
+<div class="item">
+<div class="time">早上</div>
+<div class="card">
+<div class="cardhead">
+<h3>起床＋集合＋早餐</h3>
+<span class="tag">慢慢嚟</span>
+</div>
+<p class="desc">酒店早餐，執行李唔好趕，最後檢查證件／退稅單據。</p>
+</div>
+</div>
+<div class="item">
+<div class="time">12:00</div>
+<div class="card">
+<div class="cardhead">
+<h3>CHECK-OUT：長悅旅棧</h3>
+<span class="tag">退房</span>
+</div>
+<ul class="bullets">
+<li>地址：台南市中西區北門路一段 89 號</li>
+<li class="inline-row">
+<a class="mapbtn" href="https://www.google.com/maps/search/?api=1&amp;query=長悅旅棧+台南" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>📍地圖
+                  </a>
+</li>
+</ul>
+<p class="desc">（如有寄存行李）記得回酒店攞行李先正式出發。</p>
+</div>
+</div>
+<div class="item">
+<div class="time">12:30–14:30</div>
+<div class="card">
+<div class="cardhead">
+<h3>前往高雄國際機場（台鐵＋捷運）</h3>
+<span class="tag">交通</span>
+</div>
+<ul class="bullets">
+<li>酒店 → 台南車站</li>
+<li>台鐵：台南車站 → 高雄車站（往「高雄／潮州」方向）</li>
+<li>高雄捷運紅線：高雄車站 → 高雄國際機場站（R4）</li>
+<li>步行到高雄國際機場客運大樓 1 &amp; 2</li>
+<li class="inline-row">
+<a class="mapbtn" href="https://maps.app.goo.gl/PzFk7UnhWXHkPh4g9" rel="noopener" target="_blank">
+<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
+<path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M10 4v16M14 6v16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>📍路線圖
+                  </a>
+</li>
+</ul>
+<p class="desc"><b>建議 14:30 前到達機場</b>，退稅＋寄艙＋過關會舒服好多。</p>
+</div>
+</div>
+<div class="item">
+<div class="time">14:30–16:00</div>
+<div class="card">
+<div class="cardhead">
+<h3>機場流程（客運大樓 1 &amp; 2）</h3>
+<span class="tag">出境</span>
+</div>
+<ul class="bullets">
+<li>自助退稅</li>
+<li>行李寄艙</li>
+<li>出境過關</li>
+<li>候機</li>
+</ul>
+<p class="desc">午餐：飛機餐（毋須另外安排）。</p>
+</div>
+</div>
+<div class="item">
+<div class="time">16:40–18:35</div>
+<div class="card">
+<div class="cardhead">
+<h3>回程航班：EVA Air BR 849</h3>
+<span class="tag">返香港</span>
+</div>
+<ul class="bullets">
+<li>出發：KHH 16:40</li>
+<li>抵達：HKG 18:35（香港國際機場客運大樓 1）</li>
+<li>行李：23kg（託運）＋ 7kg（手提）</li>
+</ul>
+</div>
+</div>
+</section>
+<footer class="footer">
+<div class="brand"><span class="dot"></span> 台南 6日5夜・旅行小冊子</div>
+<div>Day 6 / 6</div>
+</footer>
+</main>
+</div>
+</section>
+
+
+<script>
+(function(){
+  function setLabel(a, label){
+    // keep svg, replace trailing text
+    const svg = a.querySelector('svg');
+    a.innerHTML = '';
+    if(svg) a.appendChild(svg);
+    a.appendChild(document.createTextNode(label));
+  }
+
+  document.querySelectorAll('a.mapbtn').forEach(a=>{
+    const li = a.closest('li');
+    const ctx = (li ? li.textContent : a.parentElement?.textContent || '').replace(/\s+/g,'').toLowerCase();
+    let label = '📍地圖';
+    if(ctx.includes('路線') || ctx.includes('去程') || ctx.includes('回程')) label = '🧭路線';
+    else if(ctx.includes('上車')) label = '🚌上車';
+    else if(ctx.includes('落車') || ctx.includes('下車')) label = '🚏落車';
+    else if(ctx.includes('返酒店') || ctx.includes('回酒店')) label = '🏨返酒店';
+    // if user already typed custom label like "📍地圖" keep default
+    setLabel(a, label);
+  });
+
+  // smooth anchor
+  document.documentElement.style.scrollBehavior = 'smooth';
+})();
+</script>
+
+
+  <!-- =========================
+       緊急聯絡／重要提醒（最後一頁）
+  ========================== -->
+<section class="page day-6" id="safety">
+<style>
+/* INLINE SAFETY OVERRIDE (no cache, no variables) */
+#safety, #safety * { box-sizing:border-box; }
+#safety { background:#0f0f0f !important; color:#e5e7eb !important; }
+#safety .sidebar{ background:#0f0f0f !important; background-image:none !important; color:#facc15 !important; }
+#safety .content{ background:#141414 !important; color:#e5e7eb !important; }
+#safety h1,#safety h2,#safety h3,#safety .cardhead h3{ color:#fde68a !important; }
+#safety p,#safety li{ color:#e5e7eb !important; }
+#safety .card{ background:#1f1f1f !important; border:1px solid #333 !important; }
+#safety .tag{ background:#facc15 !important; color:#000 !important; font-weight:800; }
+#safety .mapbtn{ background:#1f1f1f !important; color:#facc15 !important; border:1px solid #facc15 !important; }
+#safety .footer{ color:#9ca3af !important; }
+
+/* =========================
+   Safety Page 時間線圓點／線條顏色修正
+   ========================= */
+#safety .timeline:before {
+  background: #374151 !important; /* 深灰線 */
+}
+
+#safety .item:before {
+  background: #facc15 !important; /* 淡黃圓點 */
+  box-shadow: 0 0 0 4px #1f1f1f !important; /* 深色外圈 */
+  border-color: #facc15 !important;
+}
+
+
+/* =========================
+   Safety Page 圓點旁標示文字顏色
+   ========================= */
+#safety .time{
+  color:#fde68a !important; /* 淡黃 */
+  font-weight:800;
+}
+
+
+/* =========================
+   Safety Page 圓點旁文字（標籤）顏色修正
+   ========================= */
+#safety .time,
+#safety .item .time {
+  color: #fde68a !important; /* 淡黃 */
+  font-weight: 900;
+}
+
+/* 若有小標籤/膠囊文字 */
+#safety .label,
+#safety .pill,
+#safety .badge {
+  color: #fde68a !important;
+  background: transparent !important;
+  border-color: #facc15 !important;
+}
+
+</style>
+
+  <div class="grid">
+    <aside class="sidebar">
+      <div>
+        <p class="daynum">重要</p>
+        <p class="daytitle">緊急聯絡／重要提醒</p>
+        <p class="daysub">建議列印一份＋手機存底（離線都睇到）</p>
+      </div>
+
+      <div class="mini-illustration" aria-hidden="true">
+        <svg viewBox="0 0 640 240" fill="none">
+          <path d="M0 190c70-28 120-34 200-14 90 22 140 22 220 0 80-22 140-18 220 14v64H0v-64z" fill="rgba(255,255,255,.20)"/>
+          <path d="M320 70l70 120H250l70-120z" fill="rgba(255,255,255,.22)"/>
+          <path d="M320 108v40" stroke="rgba(255,255,255,.9)" stroke-width="10" stroke-linecap="round"/>
+          <circle cx="320" cy="162" r="7" fill="rgba(255,255,255,.9)"/>
+          <circle cx="520" cy="70" r="22" fill="rgba(255,255,255,.25)"/>
+        </svg>
+      </div>
+
+      <div class="sidecard">
+        <h3>台灣緊急電話</h3>
+        <p>
+          🚓 警察：110<br/>
+          🚑 救護／消防：119<br/>
+          📞 手機通用緊急：112
+        </p>
+      </div>
+
+      <div class="sidecard">
+        <h3>酒店</h3>
+        <p>
+          長悅旅棧 Changyu Hotel<br/>
+          台南市中西區北門路一段 89 號
+        </p>
+      </div>
+    </aside>
+
+    <main class="content">
+      <header class="section-title">
+        <h2>帶埋呢頁，遇到事唔使慌</h2>
+        <p class="meta">（可自行補資料）</p>
+      </header>
+
+      <section class="timeline">
+
+        <div class="item">
+          <div class="time">聯絡</div>
+          <div class="card">
+            <div class="cardhead">
+              <h3>同行緊急聯絡人（建議填好）</h3>
+              <span class="tag">必填</span>
+            </div>
+            <ul class="bullets">
+              <li>聯絡人 A：__________｜電話：__________</li>
+              <li>聯絡人 B：__________｜電話：__________</li>
+              <li>香港家人／朋友：__________｜電話：__________</li>
+            </ul>
+            <p class="desc">建議大家互相存低：WhatsApp + 緊急電話（可撥打）。</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">住宿</div>
+          <div class="card">
+            <div class="cardhead">
+              <h3>酒店資料（迷路／的士好用）</h3>
+              <span class="tag">定位</span>
+            </div>
+            <ul class="bullets">
+              <li>長悅旅棧 Changyu Hotel</li>
+              <li>地址：台南市中西區北門路一段 89 號</li>
+            </ul>
+            <div class="inline-row">
+              <a class="mapbtn" href="https://www.google.com/maps/search/?api=1&query=長悅旅棧+台南" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M10 20l-6 2V6l6-2 4 2 6-2v16l-6 2-4-2z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                  <path d="M10 4v16M14 6v16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>🏨酒店地圖
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">證件</div>
+          <div class="card">
+            <div class="cardhead">
+              <h3>重要文件備份（出門前 check）</h3>
+              <span class="tag">檢查</span>
+            </div>
+            <ul class="bullets">
+              <li>護照（+ 影印／照片）</li>
+              <li>機票／登機證（去程／回程）</li>
+              <li>保險資料／保單號碼（如有）</li>
+              <li>信用卡緊急停卡電話（建議存低）</li>
+            </ul>
+            <p class="desc">建議：手機相簿開個「旅行文件」相簿，離線都睇到。</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">健康</div>
+          <div class="card">
+            <div class="cardhead">
+              <h3>小病痛／意外處理</h3>
+              <span class="tag">安全</span>
+            </div>
+            <ul class="bullets">
+              <li>唔舒服：先搵附近藥妝／藥局（描述症狀）</li>
+              <li>需要急救：即打 119（救護／消防）</li>
+              <li>需要報案：打 110</li>
+            </ul>
+            <p class="desc">如果你想，我可以再加「常用症狀中英／繁中對照」方便溝通。</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">出行</div>
+          <div class="card">
+            <div class="cardhead">
+              <h3>重要提醒（最常出事位）</h3>
+              <span class="tag">貼士</span>
+            </div>
+            <ul class="bullets">
+              <li>夜市／人多：財物貼身，手機唔好放後袋</li>
+              <li>搭車轉乘：上車前睇清方向＋尾班時間（特別 Day 4 棕1）</li>
+              <li>天氣變：帶薄外套／雨具，鞋要好行</li>
+              <li>回酒店前：確認「護照＋手機＋銀包」三樣齊</li>
+            </ul>
+          </div>
+        </div>
+
+      </section>
+
+</body>
+</html>
